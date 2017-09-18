@@ -26,7 +26,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     Context context;
     ArrayList<FoodItem> items;
     int item_layout;
-    ViewGroup parent;
     public RecyclerAdapter(Context context, ArrayList<FoodItem> items, int item_layout) {
         this.context=context;
         this.items=items;
@@ -36,12 +35,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v= LayoutInflater.from(parent.getContext()).inflate(R.layout.card_layout,null);
-        this.parent=parent;
         return new ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         final FoodItem item=items.get(position);
         //Drawable drawable=ContextCompat.getDrawable(context,item.getImage());
         //holder.image.setBackground(drawable);

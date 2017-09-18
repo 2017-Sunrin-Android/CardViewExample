@@ -26,6 +26,5 @@ public class MainActivity extends AppCompatActivity {
         data.add(new FoodItem(R.drawable.jockbal, "족발"));
 
         recyclerView.setAdapter(new RecyclerAdapter(getApplicationContext(),data,R.layout.activity_main));
-
     }
 }
