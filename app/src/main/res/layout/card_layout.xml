@@ -21,7 +21,7 @@
             <ImageView
                 android:layout_gravity="center"
                 android:layout_width="500dp"
-                android:layout_height="210dp"
+                android:layout_height="200dp"
                 android:id="@+id/image"/>
 
             <TextView

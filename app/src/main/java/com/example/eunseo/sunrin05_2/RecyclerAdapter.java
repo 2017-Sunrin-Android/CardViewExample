@@ -39,7 +39,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         final FoodItem item=items.get(position);
         //Drawable drawable=ContextCompat.getDrawable(context,item.getImage());
         //holder.image.setBackground(drawable);
@@ -49,6 +49,31 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             @Override
             public void onClick(View v) {
                 Toast.makeText(context,item.getName()+"이 눌렸습니다.",Toast.LENGTH_SHORT).show();
+            }
+        });
+        holder.cardview.setOnLongClickListener(new View.OnLongClickListener() {
+
+            @Override
+            public boolean onLongClick(View view) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(context);
+                alert.setTitle("정말로 삭제하시겠습니까?");
+                alert.setPositiveButton("Yes", new DialogInterface.OnClickListener(){
+
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        items.remove(position);
+                        notifyDataSetChanged();
+                    }
+                });
+                alert.setNegativeButton("No", new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                AlertDialog dialog = alert.create();
+                dialog.show();
+                return true;
             }
         });
     }
